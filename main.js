@@ -43,6 +43,15 @@ function transform(){
 
 
 }
+
+function del(){
+    const table = document.querySelector(".table");
+    let s = table.textContent
+    s = s.slice(0, -1);
+    table.textContent = s;
+    console.log(table.textContent);}
+
+
 function Doing() {
     transform();  // очистка NaN (если есть)
 
