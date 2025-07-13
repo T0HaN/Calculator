@@ -4,7 +4,9 @@ function wordToNumber(word){
 }
 
 let res = 0;
-let doing = '';
+let doing = [];
+console.log(parseInt("sum"));
+let flag = 0;
 
 function inputNum(n){
     const table = document.querySelector(".table");
@@ -17,19 +19,55 @@ function removeTable(){
     table.textContent = "";
 }
 
-function Doing(){
+function forSloth(){
     const table = document.querySelector(".table");
-    switch (doing) {
-        case "mul":
-            res *= parseInt(table.textContent);
-        case "sum":
-            res += parseInt(table.textContent);
-        case "min":
-            res -= parseInt(table.textContent);
-        case "div":
-            res /= parseInt(table.textContent);
-        case '':
-            res = res;
+    let c;
+    if (doing.length == NaN){
+        c = 0;
+    } else {
+        c = doing.length;
+    }
+
+    doing[c] = parseInt(table.textContent);
+}
+
+function transform(){
+    while (parseInt(doing[0]) == NaN || parseInt(doing[doing.length-1]) == NaN){
+        if (isNaN(parseInt(doing[doing.length-1]))){
+            doing.splice(doing.length-1, 1);
+        }
+        if (isNaN(parseInt(doing[0]))){
+            doing.splice(0, 1);
+        }
+    } 
+
+
+}
+function Doing() {
+    transform();  // очистка NaN (если есть)
+
+
+    res = doing[0];  // начальное значение = первый элемент (число)
+    for (let i = 1; i < doing.length; i += 2) {
+        const operator = doing[i];
+        const nextNum = doing[i + 1];
+        
+        switch (operator) {
+            case "sum":
+                res += nextNum;
+                break;  // ← важно!
+            case "min":
+                res -= nextNum;
+                break;
+            case "mul":
+                res *= nextNum;
+                break;
+            case "div":
+                res /= nextNum;
+                break;
+            default:
+                console.error("Неизвестный оператор:", operator);
+        }
     }
 }
 
@@ -38,23 +76,45 @@ function clickButton(button){
     let n = 0;
     console.log(val);
     if (['mul', 'sum', 'min', 'div'].includes(val)){
-        doing = val;
-        Doing();
+        let c;
+        forSloth();
         removeTable();
+        doing = doing.filter(function(element) {
+  return !isNaN(element);
+});
+        if (doing.length == NaN){
+            c = 0;
+        } else {
+            c = doing.length;
+        }
+        console.log(parseInt(doing[doing.length-1]));
+        if (isNaN(parseInt(doing[doing.length-1]))){
+            console.log('sjjkdfd');
+            doing[c-1] = val;
+        } else {
+            doing[c] = val;
 
-
+        }
     } else {
+        if (flag == 1){
+            removeTable();
+            flag = 0;
+        }
         n = wordToNumber(val);
         inputNum(n);
-        if (res == 0){
-            res += n;
-        }
+        
+        
     }
-    console.log(parseInt("1+1"));
+    console.log(doing);
 }
 
 function result() {
+    forSloth();
+    Doing();
+    console.log(doing);
     console.log(res);
     removeTable();
     inputNum(res);
+    flag = 1;
+    doing = [];
 }
