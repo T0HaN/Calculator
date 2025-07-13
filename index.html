@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
     <div class="main">
@@ -12,28 +13,28 @@
 
         </div>
         <div class="row">
-            <button id="seven" class="btn">7</button>
-            <button id="eigth" class="btn">8</button>
-            <button id="nine" class="btn">9</button>
-            <button class="btn" id="sum">+</button>
+            <button id="seven" onclick="clickButton(this)" class="btn">7</button>
+            <button id="eigth" onclick="clickButton(this)" class="btn">8</button>
+            <button id="nine" onclick="clickButton(this)" class="btn">9</button>
+            <button class="btn" onclick="clickButton(this)" id="sum">+</button>
         </div>
         <div class="row">
-            <button id="four" class="btn">4</button>
-            <button id="five" class="btn">5</button>
-            <button id="six" class="btn">6</button>
-            <button class="btn" id="min">-</button>
+            <button id="four" onclick="clickButton(this)" class="btn">4</button>
+            <button id="five" onclick="clickButton(this)" class="btn">5</button>
+            <button id="six" onclick="clickButton(this)" class="btn">6</button>
+            <button class="btn" onclick="clickButton(this)" id="min">-</button>
         </div>
         <div class="row">
-            <button id="one" class="btn">1</button>
-            <button id="two" class="btn">2</button>
-            <button id="three" class="btn">3</button>
-            <button class="btn" id="mul">x</button>
+            <button id="one" onclick="clickButton(this)" class="btn">1</button>
+            <button id="two" onclick="clickButton(this)" class="btn">2</button>
+            <button id="three" onclick="clickButton(this)" class="btn">3</button>
+            <button class="btn" onclick="clickButton(this)" id="mul">x</button>
         </div>
         <div class="row">
-            <button class="btn" id="zero">0</button>
-            <button class="btn" id="res">=</button>
-            <button class="btn" id="div">/</button>
-            <button class="btn" id="proc">%</button>
+            <button class="btn" onclick="clickButton(this)" id="zero">0</button>
+            <button class="btn" onclick="result()">=</button>
+            <button class="btn" onclick="clickButton(this)" id="del">del</button>
+            <button class="btn" onclick="clickButton(this)" id="div">/</button>
         </div>
 
     </div>
