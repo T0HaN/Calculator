@@ -1,5 +1,6 @@
 .main {
     background-color: rebeccapurple;
+    min-width: 276px;
     width: 40%;
     height: 250px;
     display: flex;
